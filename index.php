@@ -24,6 +24,9 @@
 		
 		<?php require 'footerjs.php'; ?>
 		<script type="text/javascript">
+			// Your computer IP, and port, matching nodejs's port
+			const WS_URL = "ws://192.168.1.1:8008/";
+			
 			// Choose nick
 			if($.isNullData("user-nick")){
 				$.spawnModal({
@@ -53,7 +56,7 @@
 			
 			// WebSocket connection
 			var _ws;
-			_ws = new WebSocket("ws://192.168.1.1:8008/");
+			_ws = new WebSocket(WS_URL);
 			_ws.onopen = ()=>{
 				console.log("WebSocket open: "+_ws.url);
 			};
