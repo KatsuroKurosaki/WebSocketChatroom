@@ -4,10 +4,12 @@
 const WebSocketServer = require('ws').Server;
 
 // Constants
+const IP_BIND = '127.0.0.1'
 const WS_PORT = 8008;
 
 // Servers
 var wsServer = new WebSocketServer({
+	host: IP_BIND,
 	port: WS_PORT
 });
 
@@ -43,4 +45,4 @@ wsServer.on('connection', (ws, req) => {
 	});
 });
 
-console.log(`WS server is listening at ws://0.0.0.0:${WS_PORT}`);
+console.log(`WS server is listening at ws://${IP_BIND}:${WS_PORT}`);
