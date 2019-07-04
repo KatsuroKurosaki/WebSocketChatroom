@@ -18,9 +18,9 @@ let connectedClients = [];
 
 // WebSocket server code
 wsServer.on('connection', (ws, req) => {
-	console.log('New connection: '+req.connection.remoteAddress);
+	console.log('New connection: ' + req.connection.remoteAddress);
 	connectedClients.push(ws);
-	
+
 	ws.on('message', (data) => {
 		console.log(data);
 		let _json = JSON.parse(data);
@@ -29,14 +29,14 @@ wsServer.on('connection', (ws, req) => {
 				ws.send(JSON.stringify({
 					user: _json.user,
 					msg: _json.msg,
-					ts: parseInt(new Date().getTime()/1000)
+					ts: parseInt(new Date().getTime() / 1000)
 				}));
 			}
 		});
 	});
-	
-	ws.on('close', (code, message)=>{
-		console.log("Closed connection: "+req.connection.remoteAddress);
+
+	ws.on('close', (code, message) => {
+		console.log("Closed connection: " + req.connection.remoteAddress);
 		connectedClients.forEach((ws, i) => {
 			if (ws.readyState !== ws.OPEN) {
 				connectedClients.splice(i, 1);
