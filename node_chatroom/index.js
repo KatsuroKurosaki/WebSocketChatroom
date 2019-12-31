@@ -4,7 +4,7 @@
 const WebSocketServer = require('ws').Server;
 
 // Constants
-const IP_BIND = '127.0.0.1'
+const IP_BIND = '0.0.0.0'
 const WS_PORT = 8008;
 
 // Servers
